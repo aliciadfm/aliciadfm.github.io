@@ -2,15 +2,23 @@ body {
     font-family: "Lucida Console", serif;
     color: white;
     background-color: #0f0f23;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
+    margin-top: 10px;
+    font-size: 20px;
 }
 
 .navbar a:hover {
     text-shadow: 1px 1px 16px rgba(255,255,255,1);
+}
+
+.navbar {
+    margin: 10px;
 }
 
 .navbar ul {
@@ -21,6 +29,7 @@ body {
 
 ul li {
     display: inline-block;
+
 }
 
 ul li:hover ul.dropdown {
@@ -31,8 +40,51 @@ ul li ul.dropdown {
     width: auto;
     position: absolute;
     display: none;
+    background-color: rgba(15, 15, 35, 0.85);
+    border: 1px inset white;
 }
 
 ul li ul.dropdown li {
     display: block;
+}
+
+/* Writing area */
+
+main {
+    margin-top: 15px;
+    height: 90vh; /* 80% de la altura de la ventana */
+}
+
+.textArea {
+    background-color: #0f0f23;
+    color: white;
+    font-size: 15px;
+    width: 98%;
+    height: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+
+/* Scrollbar */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #ebebef #0f0f23;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #0f0f23;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #ebebef;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
 }
