@@ -1,14 +1,38 @@
 body {
     font-family: "Lucida Console", serif;
+    color: white;
+    background-color: #0f0f23;
 }
 
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
 
-ul {
+.navbar a:hover {
+    text-shadow: 1px 1px 16px rgba(255,255,255,1);
+}
+
+.navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-li {
-    display: inline;
+ul li {
+    display: inline-block;
+}
+
+ul li:hover ul.dropdown {
+    display: block;
+}
+
+ul li ul.dropdown {
+    width: auto;
+    position: absolute;
+    display: none;
+}
+
+ul li ul.dropdown li {
+    display: block;
 }
