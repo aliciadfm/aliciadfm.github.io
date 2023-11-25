@@ -23,7 +23,29 @@ function indent(e) {
     }
 }
 
+function openFile() {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = ".txt"; // Adjust the file types as needed
+
+    fileInput.addEventListener("change", function () {
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                document.getElementById("textareaid").value = e.target.result;
+            };
+
+            reader.readAsText(file);
+        }
+    });
+
+    fileInput.click();
+}
+
 document.getElementById("textareaid").addEventListener("keydown", indent);
 
-
+document.getElementById("openFileButton").addEventListener("click", openFile);
 
