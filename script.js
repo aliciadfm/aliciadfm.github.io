@@ -1,3 +1,9 @@
+document.getElementById("textareaid").addEventListener("keydown", indent);
+
+document.getElementById("openFileButton").addEventListener("click", openFile);
+
+document.getElementById("newFileButton").addEventListener("click", newFile);
+
 function indent(e) {
     if(e.key === 'Tab') {
         e.preventDefault();
@@ -41,11 +47,9 @@ function openFile() {
             reader.readAsText(file);
         }
     });
-
     fileInput.click();
 }
 
-document.getElementById("textareaid").addEventListener("keydown", indent);
-
-document.getElementById("openFileButton").addEventListener("click", openFile);
-
+function newFile() {
+    document.getElementById("textareaid").value = "";
+}
