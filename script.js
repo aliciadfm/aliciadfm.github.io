@@ -1,10 +1,8 @@
 document.getElementById("textareaid").addEventListener("keydown", indent);
-
 document.getElementById("openFileButton").addEventListener("click", openFile);
-
 document.getElementById("newFileButton").addEventListener("click", newFile);
-
 document.getElementById("saveFileButton").addEventListener("click", saveFile);
+document.getElementById("boldButton").addEventListener("click", bold);
 
 function indent(e) {
     if(e.key === 'Tab') {
@@ -70,3 +68,14 @@ function saveFile() {
     link.click();
     document.body.removeChild(link);
 }
+
+function bold() {
+    let text = document.getElementById("textareaid");
+    let start = text.selectionStart;
+    let end = text.selectionEnd;
+    let selectedText = text.value.substring(start, end);
+    text.value = text.value.substring(0, start) + "**" + selectedText + "**" + text.value.substring(end);
+    text.setSelectionRange(start + 2, end + 2);
+    text.focus();
+}
+

@@ -33,11 +33,13 @@ ul li {
 
 }
 
-ul li:hover ul.dropdown {
+
+/* For the file dropdown */
+ul li:hover ul.dropdownFile {
     display: block;
 }
 
-ul li ul.dropdown {
+ul li ul.dropdownFile {
     width: auto;
     position: absolute;
     display: none;
@@ -45,9 +47,31 @@ ul li ul.dropdown {
     border: 1px inset white;
 }
 
-ul li ul.dropdown li {
+ul li ul.dropdownFile li {
     display: block;
 }
+
+
+
+/* For the edit dropdown */
+ul li:hover ul.dropdownEdit {
+    display: block;
+}
+
+ul li ul.dropdownEdit {
+    width: auto;
+    position: absolute;
+    display: none;
+    background-color: rgba(15, 15, 35, 0.85);
+    border: 1px inset white;
+}
+
+ul li ul.dropdownEdit li {
+    display: block;
+}
+
+
+
 
 /* Writing area */
 main {
