@@ -4,6 +4,8 @@ document.getElementById("openFileButton").addEventListener("click", openFile);
 
 document.getElementById("newFileButton").addEventListener("click", newFile);
 
+document.getElementById("saveFileButton").addEventListener("click", saveFile);
+
 function indent(e) {
     if(e.key === 'Tab') {
         e.preventDefault();
@@ -32,7 +34,7 @@ function indent(e) {
 function openFile() {
     const fileInput = document.createElement("input");
     fileInput.type = "file";
-    fileInput.accept = ".txt"; // Adjust the file types as needed
+    fileInput.accept = ".txt";
 
     fileInput.addEventListener("change", function () {
         const file = fileInput.files[0];
@@ -51,5 +53,20 @@ function openFile() {
 }
 
 function newFile() {
-    document.getElementById("textareaid").value = "";
+    let text = document.getElementById("textareaid");
+    const isConfirmed = text.value === '' || window.confirm("¿Estás seguro de que quieres borrar el texto?");
+    if(isConfirmed) {
+        text.value = "";
+    }
+}
+
+function saveFile() {
+    const text = document.getElementById("textareaid");
+    const blob = new Blob([text.value], {type: "text/plain"});
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = window.prompt("Elija el nombre del archivo", "archivo") + ".txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
