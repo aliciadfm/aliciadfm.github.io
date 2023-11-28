@@ -11,7 +11,6 @@ body {
     text-decoration: none;
     margin-top: 10px;
     font-size: 20px;
-
 }
 
 .navbar a:hover {
@@ -20,6 +19,8 @@ body {
 
 .navbar {
     margin: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .navbar ul {
@@ -57,7 +58,6 @@ ul li ul.dropdownFile li {
 ul li:hover ul.dropdownEdit {
     display: block;
 }
-
 ul li ul.dropdownEdit {
     width: auto;
     position: absolute;
@@ -65,12 +65,9 @@ ul li ul.dropdownEdit {
     background-color: rgba(15, 15, 35, 0.85);
     border: 1px inset white;
 }
-
 ul li ul.dropdownEdit li {
     display: block;
 }
-
-
 
 
 /* Writing area */
@@ -91,6 +88,24 @@ main {
     margin-left: 10px;
 }
 
+/* Checkbox for light and dark mode */
+#themeCheckbox {
+    margin-top: 8px;
+}
+.light-mode {
+    background-color: #ebebef;
+    color: #0f0f23;
+}
+.light-mode .textArea {
+    background-color: #ebebef;
+    color: #0f0f23;
+}
+.light-mode .navbar a {
+    color: #0f0f23;
+}
+.container {
+    display: flex;
+}
 
 /* Scrollbar */
 /* Firefox */

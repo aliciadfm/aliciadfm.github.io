@@ -3,6 +3,7 @@ document.getElementById("openFileButton").addEventListener("click", openFile);
 document.getElementById("newFileButton").addEventListener("click", newFile);
 document.getElementById("saveFileButton").addEventListener("click", saveFile);
 document.getElementById("boldButton").addEventListener("click", bold);
+document.getElementById("themeCheckbox").addEventListener("change", changeTheme);
 
 function indent(e) {
     if(e.key === 'Tab') {
@@ -77,5 +78,16 @@ function bold() {
     text.value = text.value.substring(0, start) + "**" + selectedText + "**" + text.value.substring(end);
     text.setSelectionRange(start + 2, end + 2);
     text.focus();
+}
+
+function changeTheme() {
+    let element = document.body;
+    element.classList.toggle("light-mode");
+    let text = document.getElementById("themeText");
+    if(element.classList.contains("light-mode")) {
+        text.textContent = " Change to dark mode -> "
+    } else {
+        text.textContent = " Change to light mode -> "
+    }
 }
 
