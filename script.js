@@ -1,16 +1,22 @@
-document.getElementById("textareaid").addEventListener("keydown", indent);
+let textarea = document.getElementById("textareaid");
+
+textarea.addEventListener("keydown", indent);
 document.getElementById("openFileButton").addEventListener("click", openFile);
 document.getElementById("newFileButton").addEventListener("click", newFile);
 document.getElementById("saveFileButton").addEventListener("click", saveFile);
 document.getElementById("boldButton").addEventListener("click", bold);
 document.getElementById("themeCheckbox").addEventListener("change", changeTheme);
+textarea.addEventListener("keydown", equalIndent);
+
+console.log('hola')
+
 
 function indent(e) {
     if(e.key === 'Tab') {
         e.preventDefault();
         let start = this.selectionStart;
         let end = this.selectionEnd;
-        if(start === end) {
+        if (start === end) {
             this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
             this.selectionStart = this.selectionEnd = start + 1;
         } else {
@@ -30,6 +36,32 @@ function indent(e) {
     }
 }
 
+function equalIndent(e) {
+    if (e.key === 'Enter') {
+        let textareaV = textarea.value;
+        let ini = textarea.selectionStart;
+        let final = textarea.selectionEnd;
+
+        //Dividir el texto anterior en líneas
+        let lines = textareaV.substring(0, ini).split('\n');
+        let lineBefore = lines[lines.length - 1].split('');
+        let nTabs = 0;
+        let i = 0;
+        while(i < lineBefore.length && lineBefore[i] === '\t') {
+            nTabs++;
+            i++;
+        }
+        let currentLine = textareaV.substring(ini, final);
+        while(nTabs !== 0) {
+            currentLine = '\t' + currentLine;
+            nTabs--;
+        }
+        textarea.value = textareaV.substring(0, ini) + '\n' + currentLine + textareaV.substring(final);
+        textarea.selectionStart = textarea.selectionEnd = ini + currentLine.length + 1;
+        e.preventDefault();
+    }
+}
+
 function openFile() {
     const fileInput = document.createElement("input");
     fileInput.type = "file";
@@ -42,7 +74,7 @@ function openFile() {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-                document.getElementById("textareaid").value = e.target.result;
+                textarea.value = e.target.result;
             };
 
             reader.readAsText(file);
@@ -52,7 +84,7 @@ function openFile() {
 }
 
 function newFile() {
-    let text = document.getElementById("textareaid");
+    let text = textarea;
     const isConfirmed = text.value === '' || window.confirm("¿Estás seguro de que quieres borrar el texto?");
     if(isConfirmed) {
         text.value = "";
@@ -60,7 +92,7 @@ function newFile() {
 }
 
 function saveFile() {
-    const text = document.getElementById("textareaid");
+    const text = textarea;
     const blob = new Blob([text.value], {type: "text/plain"});
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -71,7 +103,7 @@ function saveFile() {
 }
 
 function bold() {
-    let text = document.getElementById("textareaid");
+    let text = textarea;
     let start = text.selectionStart;
     let end = text.selectionEnd;
     let selectedText = text.value.substring(start, end);
