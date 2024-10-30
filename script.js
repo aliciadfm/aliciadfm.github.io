@@ -92,8 +92,7 @@ function newFile() {
 }
 
 function saveFile() {
-    const text = textarea;
-    const blob = new Blob([text.value], {type: "text/plain"});
+    const blob = new Blob([textarea.value], {type: "text/plain"});
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = window.prompt("Elija el nombre del archivo", "archivo") + ".txt";
