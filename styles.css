@@ -46,13 +46,12 @@ ul li ul.dropdownFile {
     display: none;
     background-color: rgba(15, 15, 35, 0.85);
     border: 1px inset white;
+
 }
 
 ul li ul.dropdownFile li {
     display: block;
 }
-
-
 
 /* For the edit dropdown */
 ul li:hover ul.dropdownEdit {
@@ -86,6 +85,7 @@ main {
     border: none;
     outline: none;
     margin-left: 10px;
+    tab-size: 3;
 }
 
 /* Checkbox for light and dark mode */
